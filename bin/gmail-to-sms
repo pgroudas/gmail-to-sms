@@ -1,6 +1,22 @@
-i#!/usr/bin/env ruby
+#!/usr/bin/env ruby
 
 require 'rubygems'
 require 'bundler/setup'
+require File.dirname(__FILE__) + '/../lib/gmail-to-sms'
 
-p 'Hello World'
+program :version, GmailToSms::VERSION
+program :description, 'Forwards emails from a gmail label to an sms number'
+
+command :forward do |c| 
+  c.syntax = 'gmail-to-sms forward [options]'
+  c.summary = ''
+  c.description = ''
+  c.example 'description', 'command example'
+  c.option '--gmail-user STRING', String, 'Sets gmail username'
+  c.option '--gmail-password STRING', String, 'Sets gmail password'
+  c.option '--gv-user STRING', String, 'Sets google voice username'
+  c.option '--gv-password STRING', String, 'Sets google voice password'
+  c.action do |args, options|
+   p options
+  end
+end
